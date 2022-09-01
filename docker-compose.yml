@@ -2,7 +2,8 @@ version: '2'
 
 services:
 
-  php:
+  php-sgx:
+    container_name: php-sgx
     image: enclaive/php-sgx
     build:
       context: .
