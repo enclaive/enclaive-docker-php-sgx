@@ -5,7 +5,7 @@
     <img src="images/wordpress-sgx.png" alt="Logo" width="120" >
   </a>
 
-  <h2 align="center">WORDPRESS-SGX: SGX-ready WordPress Confidential Container</h2>
+  <h2 align="center">PHP-SGX: SGX-ready PHP Confidential Container</h2>
 
   <p align="center">
     <h3>packed by <a href="https://enclaive.io">enclaive</a></h3>
@@ -30,11 +30,11 @@ docker-compose up
 **Warning:** This quick setup is only intended for development environments. You are encouraged to change the insecure default credentials and check out the available configuration options in the build section for a more secure deployment.
 
 <!-- INTRODCUTION -->
-## What is Wordpress?
+## What is PHP?
 
-> WordPress (WP, WordPress.org) is a free and open-source content management system (CMS) written in PHP[4] and paired with a MySQL or MariaDB database. Features include a plugin architecture and a template system, referred to within WordPress as Themes. WordPress was originally created as a blog-publishing system but has evolved to support other web content types including more traditional mailing lists and forums, media galleries, membership sites, learning management systems (LMS) and online stores. One of the most popular content management system solutions in use, WordPress is used by 42.8% of the top 10 million websites as of October 2021.
+PHP is a general-purpose scripting language geared toward web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. The PHP reference implementation is now produced by The PHP Group
 
-[Overview of Wordpress](https://wordpress.com/)
+[Overview of PHP](https://php.net/)
 
 > Intel Security Guard Extension (SGX) delivers advanced hardware and RAM security encryption features, so called enclaves, in order to isolate code and data that are specific to each application. When data and application code run in an enclave additional security, privacy and trust guarantees are given, making the container an ideal choice for (untrusted) cloud environments.
 
@@ -48,10 +48,10 @@ Application code executing within an Intel SGX enclave:
 - Reduces the trusted computing base of its parent application to the smallest possible footprint
 
 <!-- WHY -->
-## Why use WORDPRESS-SGX (instead of "vanilla" Wordpress) images?
-Following benefits come for free with WORDPRESS-SGX :
+## Why use PHP-SGX (instead of "vanilla" PHP) images?
+Following benefits come for free with PHP-SGX :
 
-- WORDPRESS-SGX provides a significantly reduced attack surface thanks to hardware-based memory protection. At any moment in time, the microservices in the confindential containers processing the data, storing data in the SQL database and forwarding the data to other microservices are protected. Neither enclaive nor the hosting provider can inspect the data.
+- PHP-SGX provides a significantly reduced attack surface thanks to hardware-based memory protection. At any moment in time, the microservices in the confindential containers processing the data, storing data in the SQL database and forwarding the data to other microservices are protected. Neither enclaive nor the hosting provider can inspect the data.
 - Hardened security against kernel-space exploits, malicious and accidental privilege [insider](https://www.ibm.com/topics/insider-threats) attacks, [UEFI firmware](https://thehackernews.com/2022/02/dozens-of-security-flaws-discovered-in.html) exploits and other "root" attacks using the corruption of the application to infiltrate your network and system
 - Run on any hosting environment irrespectivably of geo-location and comply with privacy export regulation, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
 - GDPR/CCPA compliant processing ("data in use") of user data in the cloud as data is anonymized thanks to the enclave
@@ -59,7 +59,7 @@ Following benefits come for free with WORDPRESS-SGX :
 
 
 <!-- DEPLOY IN THE CLOUD -->
-## How to deploy WORDPRESS-SGX in a zero-trust cloud?
+## How to deploy PHP-SGX in a zero-trust cloud?
 
 The following cloud infrastractures are SGX-ready out of the box
 * [Microsoft Azure Confidential Cloud](https://azure.microsoft.com/en-us/solutions/confidential-compute/) 
@@ -104,7 +104,7 @@ Install the DCAP drivers from the Intel SGX [repo](https://github.com/intel/linu
 <!-- GET THIS IMAGE -->
 ### Get this image
 
-The recommended way to get the enclaive WORDPRESS-SGX Open Source Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/enclaive/wordpress-sgx).
+The recommended way to get the enclaive PHP-SGX Open Source Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/enclaive/wordpress-sgx).
 
 ```console
 docker pull enclaive/wordpress-sgx:latest
@@ -129,20 +129,20 @@ docker build -t enclaive/wordpress-sgx:latest 'https://github.com/enclaive/encla
 <!-- Import existing page -->
 ## Import existing page/Backup
 
-**Important:** WORDPRESS-SGX runs in an enclave turning the application into an in-memory, fully encrypted process. Persistance is thus not guaranteed. Any changes made through the WordPress admin interface are lost when the enclave is stopped. For production usage we strongly advise to take additional measures to keep track of changes, be it through a CI/CD pipeline or be it thorugh the in-build Akeeba backup plugin.
+**Important:** PHP-SGX runs in an enclave turning the application into an in-memory, fully encrypted process. Persistance is thus not guaranteed. Any changes made through the PHP admin interface are lost when the enclave is stopped. For production usage we strongly advise to take additional measures to keep track of changes, be it through a CI/CD pipeline or be it thorugh the in-build Akeeba backup plugin.
 
 ### Staging and Production CI/CD pipeline
 Build a non-enclaved staging pipeline where changes are persistance. Create a production pipeline importing the state changes, build and deploy the enclaved production version.
 
 ### Akeeba Plugin
 
-The [Akeeba plugin](https://www.akeeba.com/) helps to backup and restore a WordPress site including the database. This makes the migration from WordPress to WordPress-SGX as easy as possible, if you are not familiar with pipelines.
+The [Akeeba plugin](https://www.akeeba.com/) helps to backup and restore a PHP site including the database. This makes the migration from PHP to PHP-SGX as easy as possible, if you are not familiar with pipelines.
 
 Please visit [Akeeba download site](https://www.akeeba.com/products/akeeba-backup-wordpress.html) and install the plugin to your current WP instance. Akeeba provides [documentation](https://www.akeeba.com/documentation/akeeba-solo/installing-wordpress.html) and a [video tutorial](https://www.youtube.com/watch?v=VneMbQ2g26Y&list=PLU28ZwI9FpHbM-CDBGnIemq17qefQob8V) on youtube. 
 
-To transfer your website into the WORDPRESS-SGX instance, follow these instructions: 
+To transfer your website into the PHP-SGX instance, follow these instructions: 
 
-Before you create a backup you need to change the type of the backup file. At the current development state, WORDPRESS-SGX supports zip files only. Change the default `jpa` file type to `zip` in the configuration. Click on Akeeba Backup in the navigation tree in the admin page. Click on the Configuration Button in the Main Operations block. Search for Archiver Engine and choose ZIP format. Don’t forget to scroll up to save your change. Please don’t set a password for the backup file. 
+Before you create a backup you need to change the type of the backup file. At the current development state, PHP-SGX supports zip files only. Change the default `jpa` file type to `zip` in the configuration. Click on Akeeba Backup in the navigation tree in the admin page. Click on the Configuration Button in the Main Operations block. Search for Archiver Engine and choose ZIP format. Don’t forget to scroll up to save your change. Please don’t set a password for the backup file. 
 
 ![Image of the configuration](images/ZIP-config.png)
 
@@ -184,7 +184,7 @@ This project greatly celebrates all contributions from the open source community
 * [Gramine Project](https://github.com/gramineproject)
 * [Intel SGX](https://github.com/intel/linux-sgx-driver)
 * [EdgelessDB](https://github.com/edgelesssys/edgelessdb)
-* [WordPress](https://github.com/WordPress/WordPress) 
+* [PHP](https://github.com/php/php-src) 
 
 
 ## Trademarks 

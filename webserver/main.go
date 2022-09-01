@@ -151,8 +151,6 @@ func scriptPath(urlPath string) (string, error) {
 func main() {
 	fmt.Println("starting")
 
-	ExtractAppZip()
-
 	//TODO spawn more workers. but php needs thread locals and i'm not confident yet they actually work correctly in gramine.
 	go phpW()
 
@@ -209,13 +207,10 @@ func main() {
 		}
 	})
 
-	handler := tracing(NewApacheLoggingHandler(logging(router)))
+	handler := tracing(logging(router))
 	//handler := tracing(logging(caching(router)))
 	//go cachingRequest()
 
-	fmt.Println("Trying to restore from a backup")
-	restore(handler)
-
-	fmt.Println("listening on https://0.0.0.0:443")
-	panic(http.ListenAndServeTLS("0.0.0.0:443", "/app/tls/server.crt", "/app/tls/server.key", handler))
+	fmt.Println("listening on https://0.0.0.0:80")
+	panic(http.ListenAndServe("0.0.0.0:80", handler))
 }
