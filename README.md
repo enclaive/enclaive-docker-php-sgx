@@ -1,11 +1,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <table>
+  <tr><td>
   <a href="https://enclaive.io/products/">
-    <img src="images/wordpress-sgx.png" alt="Logo" width="120" >
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="PHP-SGX" width="120" >
   </a>
+  </td></tr>
+  </table>
 
-  <h2 align="center">PHP-SGX: SGX-ready PHP Confidential Container</h2>
+  <h2 align="center">PHP-SGX: Run PHP applications in the safest Confidential Compute Environment</h2>
 
   <p align="center">
     <h3>packed by <a href="https://enclaive.io">enclaive</a></h3>
@@ -14,9 +18,9 @@
     <br />
     <a href="#contributing">Contribute</a>
     ·
-    <a href="https://github.com/enclaive/enclaive-docker-wordpress-sgx/issues">Report Bug</a>
+    <a href="https://github.com/enclaive/enclaive-docker-php-sgx/issues">Report Bug</a>
     ·
-    <a href="https://github.com/enclaive/enclaive-docker-wordpress-sgx/issues">Request Feature</a>
+    <a href="https://github.com/enclaive/enclaive-docker-php-sgx/issues">Request Feature</a>
   </p>
 </div>
 
@@ -25,7 +29,7 @@
 ```sh
 cp .env.example .env
 # edit .env
-docker-compose up
+docker compose up
 ```
 **Warning:** This quick setup is only intended for development environments. You are encouraged to change the insecure default credentials and check out the available configuration options in the build section for a more secure deployment.
 
@@ -51,11 +55,12 @@ Application code executing within an Intel SGX enclave:
 ## Why use PHP-SGX (instead of "vanilla" PHP) images?
 Following benefits come for free with PHP-SGX :
 
-- PHP-SGX provides a significantly reduced attack surface thanks to hardware-based memory protection. At any moment in time, the microservices in the confindential containers processing the data, storing data in the SQL database and forwarding the data to other microservices are protected. Neither enclaive nor the hosting provider can inspect the data.
-- Hardened security against kernel-space exploits, malicious and accidental privilege [insider](https://www.ibm.com/topics/insider-threats) attacks, [UEFI firmware](https://thehackernews.com/2022/02/dozens-of-security-flaws-discovered-in.html) exploits and other "root" attacks using the corruption of the application to infiltrate your network and system
-- Run on any hosting environment irrespectivably of geo-location and comply with privacy export regulation, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
-- GDPR/CCPA compliant processing ("data in use") of user data in the cloud as data is anonymized thanks to the enclave
-- Last, but not least  "Small step for a dev, giant leap for a zero-trust infrastructure"
+* Protect PHP code, files, applications, services, plugins against intelectual property theft/violation irrespectively where the application runs thanks to full fledge memory container encryption and integrity protection at runtime
+* Shield container application against container escape attacks with hardware-graded security against kernel-space exploits, malicious and accidental privilege [insider](https://www.ibm.com/topics/insider-threats) attacks, [UEFI firmware](https://thehackernews.com/2022/02/dozens-of-security-flaws-discovered-in.html) exploits and other "root" attacks using the corruption of the application to infiltrate your network and system
+* Build and deploy PHP application as usual while inheriting literally for free security and privacy through containerization including
+    * strictly better TOMs (technical and organizatorial measures)
+    * privacy export regulations compliant deployment anywhere, such as [Schrems-II](https://www.europarl.europa.eu/RegData/etudes/ATAG/2020/652073/EPRS_ATA(2020)652073_EN.pdf)
+    * GDPR/CCPA compliant processing ("data in use") of user data (in the cloud) as data is relatively anonymized thanks to the enclave
 
 
 <!-- DEPLOY IN THE CLOUD -->
@@ -64,7 +69,8 @@ Following benefits come for free with PHP-SGX :
 The following cloud infrastractures are SGX-ready out of the box
 * [Microsoft Azure Confidential Cloud](https://azure.microsoft.com/en-us/solutions/confidential-compute/) 
 * [OVH Cloud](https://docs.ovh.com/ie/en/dedicated/enable-and-use-intel-sgx/)
-* [Alibaba Cloud](https://www.alibabacloud.com/blog/alibaba-cloud-released-industrys-first-trusted-and-virtualized-instance-with-support-for-sgx-2-0-and-tpm_596821) 
+* [Alibaba Cloud](https://www.alibabacloud.com/blog/alibaba-cloud-released-industrys-first-trusted-and-virtualized-instance-with-support-for-sgx-2-0-and-tpm_596821)
+* [Kraud Cloud](https://kraud.cloud)
 
 Confidential compute is a fast growing space. Cloud providers continiously add confidential compute capabilities to their portfolio. Please [contact](#contact) us if the infrastracture provider of your preferred choice is missing.
 
@@ -123,7 +129,7 @@ docker pull enclaive/wordpress-sgx:[TAG]
 If you wish, you can also build the image yourself.
 
 ```console
-docker build -t enclaive/wordpress-sgx:latest 'https://github.com/enclaive/enclaive-docker-wordpress-sgx.git#master'
+docker build -t enclaive/php-sgx:latest 'https://github.com/enclaive/enclaive-docker-php-sgx.git#master'
 ```
 
 <!-- Import existing page -->
@@ -148,7 +154,7 @@ Before you create a backup you need to change the type of the backup file. At th
 
 Next create a backup file by clicking on the Backup Now button. When the backup is done click on the Manage Backups button. Download the backup file and rename it to `backup.zip`. 
 
-Move the `backup.zip` file into the root folder of this git repository and run the command `docker-compose up`. After the docker is up and running you can visit your page in the browser and explore your page on a enclaved docker container. 
+Move the `backup.zip` file into the root folder of this git repository and run the command `docker compose up`. After the docker is up and running you can visit your page in the browser and explore your page on a enclaved docker container. 
 
 <!-- CONTRIBUTING -->
 ## Contributing
