@@ -22,6 +22,14 @@
     ·
     <a href="https://github.com/enclaive/enclaive-docker-php-sgx/issues">Request Feature</a>
   </p>
+  <table style="width:100%">
+<tr>
+    <td width="25%" halign="center" valign="top">
+        <a href="https://www.youtube.com/watch?v=DbxZuflYtC8"><img  src="https://img.youtube.com/vi/DbxZuflYtC8/0.jpg"></img></a>
+        <br>Running Wordpress in PHP-SGX Confidenital Container (<a href="https://github.com/enclaive/enclaive-docker-php-sgx/tree/demo">read more</a>)                                                                                           </td>
+     </td>
+ </tr>
+ </table>
 </div>
 
 ## TL;DR
@@ -29,6 +37,8 @@
 ```sh
 cp .env.example .env
 # edit .env
+docker pull enclaive/php-sgx
+# or
 docker compose up
 ```
 **Warning:** This quick setup is only intended for development environments. You are encouraged to change the insecure default credentials and check out the available configuration options in the build section for a more secure deployment.
@@ -110,18 +120,18 @@ Install the DCAP drivers from the Intel SGX [repo](https://github.com/intel/linu
 <!-- GET THIS IMAGE -->
 ### Get this image
 
-The recommended way to get the enclaive PHP-SGX Open Source Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/enclaive/wordpress-sgx).
+The recommended way to get the enclaive PHP-SGX Open Source Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/enclaive/php-sgx).
 
 ```console
-docker pull enclaive/wordpress-sgx:latest
+docker pull enclaive/php-sgx:latest
 ```
 
 To use a specific version, you can pull a versioned tag. You can view the
-[list of available versions](https://hub.docker.com/r/enclaive/wordpress-sgx/tags/)
+[list of available versions](https://hub.docker.com/r/enclaive/php-sgx/tags/)
 in the Docker Hub Registry.
 
 ```console
-docker pull enclaive/wordpress-sgx:[TAG]
+docker pull enclaive/php-sgx:[TAG]
 ```
 
 <!-- BUILD THE IMAGE -->
@@ -189,7 +199,6 @@ This project greatly celebrates all contributions from the open source community
 
 * [Gramine Project](https://github.com/gramineproject)
 * [Intel SGX](https://github.com/intel/linux-sgx-driver)
-* [EdgelessDB](https://github.com/edgelesssys/edgelessdb)
 * [PHP](https://github.com/php/php-src) 
 
 
