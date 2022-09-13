@@ -147,25 +147,6 @@ docker build -t enclaive/php-sgx:latest 'https://github.com/enclaive/enclaive-do
 
 **Important:** PHP-SGX runs in an enclave turning the application into an in-memory, fully encrypted process. Persistance is thus not guaranteed. Any changes made through the PHP admin interface are lost when the enclave is stopped. For production usage we strongly advise to take additional measures to keep track of changes, be it through a CI/CD pipeline or be it thorugh the in-build Akeeba backup plugin.
 
-### Staging and Production CI/CD pipeline
-Build a non-enclaved staging pipeline where changes are persistance. Create a production pipeline importing the state changes, build and deploy the enclaved production version.
-
-### Akeeba Plugin
-
-The [Akeeba plugin](https://www.akeeba.com/) helps to backup and restore a PHP site including the database. This makes the migration from PHP to PHP-SGX as easy as possible, if you are not familiar with pipelines.
-
-Please visit [Akeeba download site](https://www.akeeba.com/products/akeeba-backup-wordpress.html) and install the plugin to your current WP instance. Akeeba provides [documentation](https://www.akeeba.com/documentation/akeeba-solo/installing-wordpress.html) and a [video tutorial](https://www.youtube.com/watch?v=VneMbQ2g26Y&list=PLU28ZwI9FpHbM-CDBGnIemq17qefQob8V) on youtube. 
-
-To transfer your website into the PHP-SGX instance, follow these instructions: 
-
-Before you create a backup you need to change the type of the backup file. At the current development state, PHP-SGX supports zip files only. Change the default `jpa` file type to `zip` in the configuration. Click on Akeeba Backup in the navigation tree in the admin page. Click on the Configuration Button in the Main Operations block. Search for Archiver Engine and choose ZIP format. Don’t forget to scroll up to save your change. Please don’t set a password for the backup file. 
-
-![Image of the configuration](images/ZIP-config.png)
-
-Next create a backup file by clicking on the Backup Now button. When the backup is done click on the Manage Backups button. Download the backup file and rename it to `backup.zip`. 
-
-Move the `backup.zip` file into the root folder of this git repository and run the command `docker compose up`. After the docker is up and running you can visit your page in the browser and explore your page on a enclaved docker container. 
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
