@@ -22,14 +22,11 @@
     ·
     <a href="https://github.com/enclaive/enclaive-docker-php-sgx/issues">Request Feature</a>
   </p>
-  <table style="width:100%">
-<tr>
-    <td width="25%" halign="center" valign="top">
-        <a href="https://www.youtube.com/watch?v=DbxZuflYtC8"><img  src="https://img.youtube.com/vi/DbxZuflYtC8/0.jpg"></img></a>
-        <br>Demo-Video: Wordpress within PHP-SGX Confidenital Container (<a href="https://github.com/enclaive/enclaive-docker-php-sgx/tree/demo">read more</a>)                                                                                           </td>
-     </td>
- </tr>
- </table>
+        <a href="https://www.youtube.com/watch?v=DbxZuflYtC8">
+          <img align="center" src="https://img.youtube.com/vi/DbxZuflYtC8/0.jpg"></img>
+        </a>
+        <br>Demo-Video: Wordpress in PHP-SGX Confidenital Container 
+        (<a href="https://github.com/enclaive/enclaive-docker-php-sgx/tree/demo">read more</a>)                                                           
 </div>
 
 ## TL;DR
